@@ -46,3 +46,24 @@ add_action('wp_enqueue_scripts', function () {
 add_filter('jpeg_quality', function () {
     return 100;
 }, 10, 2);
+
+\WPEloquent\Core\Laravel::connect([
+	'global' => true,
+
+	'config' => [
+
+		'database' => [
+			'user'     => env('DB_USER'),
+			'password' => env('DB_PASSWORD'),
+			'name'     => env('DB_NAME'),
+			'host'     => env('DB_HOST'),
+			'port'     => env('DB_PORT')
+		],
+
+		'prefix' => env('WP_PREFIX'),
+	],
+
+	'events' => false,
+
+	'log'    => true
+]);
